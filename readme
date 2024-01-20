@@ -1,0 +1,113 @@
+# Build Docker image for car-care-web
+docker build -t jabirhussainat/car-care-web:car-care-web .
+
+# Build Docker image for MongoDB
+docker pull mongo:latest
+---------------------------------------------------------
+# Tag car-care-web image with a version
+docker tag jabirhussainat/car-care-web:car-care-web jabirhussainat/car-care-web:1.0.0
+
+# Tag mongo image with a version
+docker tag mongo:latest mongo:1.0.0
+
+----------------------------------------------------------
+# Push car-care-web image to Docker Hub
+docker push jabirhussainat/car-care-web:car-care-web
+
+# Push mongo image to Docker Hub
+docker push mongo:latest
+---------------------------------------------------------
+# Pull car-care-web image from Docker Hub
+docker pull jabirhussainat/car-care-web:car-care-web
+
+# Pull mongo image from Docker Hub
+docker pull mongo:latest
+---------------------------------------------------------
+# Pull car-care-web image from Docker Hub
+docker pull jabirhussainat/car-care-web:car-care-web
+
+# Pull mongo image from Docker Hub
+docker pull mongo:latest
+---------------------------------------------------------
+Kubernetes======================================================================
+
+# Apply car-care deployment and service
+kubectl apply -f car-care-deployment-and-service.yaml
+
+# Apply mongo deployment and service
+kubectl apply -f mongo-deployment-and-service.yaml
+------------------------------------------------------------
+# Delete car-care deployment
+kubectl delete deployment car-care-deploy
+
+# Delete mongo deployment
+kubectl delete deployment mongo-deploy
+------------------------------------------------------------
+# Get list of deployments
+kubectl get deployments
+
+# Get list of pods
+kubectl get pods
+
+# Get list of services
+kubectl get services
+--------------------------------------------------------------
+# Check logs for a specific pod
+kubectl logs <pod_name>
+--------------------------------------------------------------
+Minikube==============================================================
+--------------------------------------------------------------
+# Start Minikube cluster
+minikube start
+--------------------------------------------------------------
+# Tunnel to expose a service
+minikube service <service_name>
+--------------------------------------------------------------
+# Stop Minikube cluster
+minikube stop
+--------------------------------------------------------------
+# Delete Minikube cluster
+minikube delete
+--------------------------------------------------------------
+# Enable Ingress addon
+minikube addons enable ingress
+--------------------------------------------------------------
+# Apply Ingress configuration
+kubectl apply -f ingress.yaml
+--------------------------------------------------------------
+# Check Ingress status
+kubectl get ingress
+--------------------------------------------------------------
+Docker:
+
+Definition: Docker is a platform for developing, shipping, and running applications in containers. Containers allow a developer to package an application with all of the parts it needs, such as libraries and dependencies, and ship it all out as one package.
+Kubernetes:
+
+Definition: Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
+Minikube:
+
+Definition: Minikube is a tool that enables you to run Kubernetes clusters on your local machine. It provides a single-node Kubernetes cluster, making it easy to get started with Kubernetes development and testing locally.
+Overview of the Terms:
+
+Docker: Focuses on containerization, packaging, and running applications in isolated environments.
+Kubernetes: Focuses on orchestrating and managing the deployment, scaling, and operation of containerized applications.
+Minikube: A tool for running a local, single-node Kubernetes cluster on a developer's machine for testing and development purposes.
+Relationship:
+
+Docker is used to create containers that package applications and their dependencies.
+Kubernetes is used to manage and orchestrate these containers, ensuring they run efficiently and reliably in production environments.
+Minikube provides a local, lightweight Kubernetes environment for development and testing.
+Example Commands:
+
+Docker:
+
+docker build -t my-app:latest .: Build a Docker image from the current directory.
+docker run -p 8080:80 my-app:latest: Run a containerized application on port 8080.
+Kubernetes:
+
+kubectl apply -f deployment.yaml: Deploy a Kubernetes application defined in a YAML file.
+kubectl get pods: Check the status of running pods.
+Minikube:
+
+minikube start: Start a local Kubernetes cluster.
+minikube dashboard: Open the Kubernetes dashboard in a web browser.
